@@ -774,6 +774,22 @@ h2{font-family:"Orbitron",sans-serif;font-size:clamp(24px,3vw,42px);font-weight:
   .domain-tag { font-size:10px; padding:5px 10px; }
 }
 
+
+  .flagship-grid { grid-template-columns:1fr; gap:14px; }
+  #flagship { padding:60px 16px !important; }
+  .flagship-card { padding:18px; }
+  .flagship-name { font-size:18px; }
+  .flagship-sub { font-size:10px; }
+  .flagship-desc { font-size:13px; margin-bottom:10px; }
+  .flagship-points { display:none; }
+  .accordion-mobile { display:grid; grid-template-columns:1fr !important; gap:12px !important; }
+  .accordion-card { padding:16px !important; }
+  .accordion-body { max-height:0; }
+  .accordion-card.open .accordion-body { max-height:220px; }
+  .about-pillar, .sector-card, .why-item { transform:none !important; }
+  .sector-head .sector-name { font-size:14px; line-height:1.3; }
+  .why-head .why-title { margin-bottom:0; }
+
 /* =============================================
    SMALL MOBILE — max-width: 480px
    ============================================= */
@@ -927,6 +943,33 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 .footer-copy{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--text-dim);}
 .footer-tagline{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);letter-spacing:0.1em;}
 @media(max-width:900px){nav{padding:0 24px;}.nav-toggle{display:block;}.nav-links{display:none;}#hero{padding:100px 24px 60px;}.hflow-full{grid-template-columns:1fr;max-width:400px;}.hflow-canvas{display:none;}.hflow-engine-wrap{margin:16px auto;}.about-grid{grid-template-columns:1fr;gap:40px;}.product-panel.active{grid-template-columns:1fr;}.sectors-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr 1fr;}.why-item{border-bottom:1px solid var(--border);}.contact-grid{grid-template-columns:1fr;}footer{flex-direction:column;gap:16px;text-align:center;}#products{padding:80px 24px;}#about,#sectors,#why,#contact{padding:80px 24px;}.products-nav{flex-wrap:wrap;width:100%;}.prod-tab{flex:1;min-width:80px;text-align:center;font-size:9px;padding:10px 8px;}.trinity-row{grid-template-columns:1fr;}.trinity-card{border-right:none;border-bottom:1px solid var(--border);}.ffdcs-stat-row{grid-template-columns:1fr 1fr;}.sen-twin{grid-template-columns:1fr;}.sen-grid{grid-template-columns:1fr 1fr;}.sen-stab-grid{grid-template-columns:1fr 1fr;}.ffdcs-outcome-grid{grid-template-columns:1fr 1fr;}.ffdcs-act-tab{font-size:9px;padding:9px 12px;}}
+
+/* FLAGSHIP SYSTEMS */
+.flagship-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.flagship-card{padding:24px;background:linear-gradient(180deg,rgba(22,50,80,0.95),rgba(13,33,55,0.95));border:1px solid var(--border);transition:border-color .25s,transform .25s,box-shadow .25s;cursor:pointer;}
+.flagship-card:hover{border-color:rgba(232,184,75,0.45);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,0.22);}
+.flagship-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.flagship-badge{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;background:color-mix(in srgb,var(--fc) 14%, transparent);border:1px solid color-mix(in srgb,var(--fc) 36%, transparent);color:var(--fc);}
+.flagship-arrow{font-size:18px;color:var(--text-dim);}
+.flagship-name{font-family:"Orbitron",sans-serif;font-size:20px;color:var(--text-bright);margin-bottom:8px;line-height:1.2;}
+.flagship-sub{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.04em;margin-bottom:12px;line-height:1.6;}
+.flagship-desc{font-size:14px;line-height:1.72;color:var(--text-dim);margin-bottom:14px;}
+.flagship-points{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.flagship-points li{font-size:12px;color:var(--text);line-height:1.5;display:flex;gap:8px;align-items:flex-start;}
+.flagship-points li::before{content:"▸";color:var(--accent);font-size:10px;margin-top:3px;flex-shrink:0;}
+
+/* MOBILE ACCORDIONS */
+.accordion-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:transparent;border:none;padding:0;color:inherit;text-align:left;}
+.accordion-plus{font-family:"IBM Plex Mono",monospace;font-size:20px;line-height:1;color:var(--accent);flex-shrink:0;transition:transform .2s ease;}
+.accordion-card.open .accordion-plus{transform:rotate(45deg);}
+.accordion-body{overflow:hidden;max-height:none;transition:max-height .28s ease;}
+.accordion-body-inner{padding-top:10px;}
+.sector-head,.why-head{padding:0;}
+.why-head .why-num{margin-bottom:0;}
+@media(min-width:769px){
+  .accordion-plus{display:none;}
+}
+
 </style>
 
 <body>
@@ -1083,59 +1126,66 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         </div>
         <!-- DOMAIN TAGS -->
         <div style="margin-top:24px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.18em;margin-bottom:12px;">// MULTI DOMAIN</div>
-          <div class="domain-tags">
-            <span class="domain-tag">Defence</span>
-            <span class="domain-tag">Industry</span>
-            <span class="domain-tag">Energy</span>
-            <span class="domain-tag">Critical Infra</span>
-            <span class="domain-tag">Governance</span>
-          </div>
+
         </div>
       </div>
     </div>
 
     <!-- BOTTOM: 2x2 PILLAR GRID -->
-    <div class="about-pillars-grid">
-      <div class="about-pillar">
-        <div class="about-pillar-icon" style="background:rgba(232,184,75,0.1);color:#e8b84b;">⚡</div>
-        <div>
-          <div class="about-pillar-title" style="color:#e8b84b;">Operational First</div>
-          <div class="about-pillar-desc">Built from real-world operational requirements — not theoretical models</div>
-        </div>
+    <div class="about-pillars-grid accordion-mobile" data-accordion-group="philosophy">
+      <div class="about-pillar accordion-card" data-accordion>
+        <button class="accordion-head" type="button" onclick="toggleAccordion(this)">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="about-pillar-icon" style="background:rgba(232,184,75,0.1);color:#e8b84b;">⚡</div>
+            <div><div class="about-pillar-title" style="color:#e8b84b;">Operational First</div></div>
+          </div>
+          <span class="accordion-plus">+</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner"><div class="about-pillar-desc">Built from real-world operational requirements — not theoretical models</div></div></div>
       </div>
-      <div class="about-pillar">
-        <div class="about-pillar-icon" style="background:rgba(74,158,255,0.1);color:#4a9eff;">🔒</div>
-        <div>
-          <div class="about-pillar-title" style="color:#4a9eff;">Secure by Design</div>
-          <div class="about-pillar-desc">Air-gapped, on-premise capable architectures for the most sensitive environments</div>
-        </div>
+      <div class="about-pillar accordion-card" data-accordion>
+        <button class="accordion-head" type="button" onclick="toggleAccordion(this)">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="about-pillar-icon" style="background:rgba(74,158,255,0.1);color:#4a9eff;">🔒</div>
+            <div><div class="about-pillar-title" style="color:#4a9eff;">Secure by Design</div></div>
+          </div>
+          <span class="accordion-plus">+</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner"><div class="about-pillar-desc">Air-gapped, on-premise capable architectures for the most sensitive environments</div></div></div>
       </div>
-      <div class="about-pillar">
-        <div class="about-pillar-icon" style="background:rgba(46,213,115,0.1);color:#2ed573;">🧠</div>
-        <div>
-          <div class="about-pillar-title" style="color:#2ed573;">Integrated Systems</div>
-          <div class="about-pillar-desc">Combining sensors, simulation, and AI into unified operational solutions</div>
-        </div>
+      <div class="about-pillar accordion-card" data-accordion>
+        <button class="accordion-head" type="button" onclick="toggleAccordion(this)">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="about-pillar-icon" style="background:rgba(46,213,115,0.1);color:#2ed573;">🧠</div>
+            <div><div class="about-pillar-title" style="color:#2ed573;">Integrated Systems</div></div>
+          </div>
+          <span class="accordion-plus">+</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner"><div class="about-pillar-desc">Combining sensors, simulation, and AI into unified operational solutions</div></div></div>
       </div>
-      <div class="about-pillar">
-        <div class="about-pillar-icon" style="background:rgba(167,139,250,0.1);color:#a78bfa;">🚀</div>
-        <div>
-          <div class="about-pillar-title" style="color:#a78bfa;">Scalable Platforms</div>
-          <div class="about-pillar-desc">Designed for multi-site, enterprise and fleet-wide deployment from day one</div>
-        </div>
+      <div class="about-pillar accordion-card" data-accordion>
+        <button class="accordion-head" type="button" onclick="toggleAccordion(this)">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="about-pillar-icon" style="background:rgba(167,139,250,0.1);color:#a78bfa;">🚀</div>
+            <div><div class="about-pillar-title" style="color:#a78bfa;">Scalable Platforms</div></div>
+          </div>
+          <span class="accordion-plus">+</span>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner"><div class="about-pillar-desc">Designed for multi-site, enterprise and fleet-wide deployment from day one</div></div></div>
       </div>
-    </div>
+    </div></div>
 
   </div>
 </section>
+
+
 
 <!-- PRODUCTS -->
 <section id="products">
   <div class="products-container">
     <div class="sec-header">
       <span class="sec-tag">// OUR PLATFORMS</span>
-      <h2>Intelligence Systems Portfolio</h2>
+      <h2>Decision Intelligence Platforms</h2>
       <div class="sec-line"></div>
     </div>
     <div class="products-nav">
@@ -1144,7 +1194,8 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
       <button class="prod-tab" onclick="showProduct('drishti',this)" style="--pt-color:#a78bfa;">DRISHTI</button>
       <button class="prod-tab" onclick="showProduct('ic2',this)" style="--pt-color:#2ed573;">IC&amp;C</button>
       <button class="prod-tab" onclick="showProduct('dss',this)" style="--pt-color:#f97316;">DSS-SOS</button>
-      <button class="prod-tab" onclick="showProduct('das',this)" style="--pt-color:#ff6b6b;">DT&amp;AS</button>
+      <button class="prod-tab" onclick="showProduct('das',this)" style="--pt-color:#ff6b6b;">DAS/DTS</button>
+      <button class="prod-tab" onclick="showProduct('dtsim',this)" style="--pt-color:#22d3ee;">Digital Twin</button>
     </div>
 
     <!-- FFDCS FULL STORYTELLING -->
@@ -2461,6 +2512,74 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         </div>
       </div>
     </div>
+
+
+    <!-- DIGITAL TWIN & SIMULATION -->
+    <div class="product-panel full-width" id="panel-dtsim" style="display:none;">
+      <div class="prod-story-header">
+        <div class="prod-story-name">Digital Twin</div>
+        <div class="prod-story-tagline">Digital Twin &amp; Simulation</div>
+      </div>
+      <div style="max-width:980px;margin:0 auto;">
+        <div class="ffdcs-act-label">Capability Overview</div>
+        <h3 class="ffdcs-headline">Your platform. Replicated.<br><span style="color:var(--accent);font-weight:400;">Ready to stress-test before the mission.</span></h3>
+        <p class="ffdcs-body">Medjay builds high-fidelity digital replicas of physical systems — ships, facilities, command environments — so operators can <strong>train, rehearse and validate decisions</strong> without real-world risk. When live sensor data feeds in, the twin becomes a continuous decision-support tool, not just a model.</p>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-dim);line-height:1.7;"><span style="color:#22d3ee;">▸</span><span>Real-time digital replication of physical systems, assets and operational environments.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-dim);line-height:1.7;"><span style="color:#22d3ee;">▸</span><span>Scenario-based simulation for training, testing, mission rehearsal and operational validation.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-dim);line-height:1.7;"><span style="color:#22d3ee;">▸</span><span>Integration with live sensor data for deeper operational visibility and informed decision support.</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-dim);line-height:1.7;"><span style="color:#22d3ee;">▸</span><span>Predictive modelling to assess system behaviour under stress, disruption and failure conditions.</span></div>
+        </div>
+        <p class="ffdcs-body" style="margin-top:22px;">The gap between a plan and its execution is where decisions fail. Digital twin closes that gap.</p>
+
+        <div class="trinity-row" style="margin-top:32px;">
+          <div class="trinity-card"><div class="trinity-icon">🧭</div><div class="trinity-word" style="color:#22d3ee;">Model</div><div class="trinity-desc">Create a structured digital representation of assets, systems, spaces and workflows.</div></div>
+          <div class="trinity-card"><div class="trinity-icon">🎮</div><div class="trinity-word" style="color:#22d3ee;">Simulate</div><div class="trinity-desc">Run operational scenarios, stress cases and response sequences in a safe environment.</div></div>
+          <div class="trinity-card"><div class="trinity-icon">📈</div><div class="trinity-word" style="color:#22d3ee;">Improve</div><div class="trinity-desc">Use simulation outcomes to refine doctrine, training, design and operational readiness.</div></div>
+        </div>
+
+        <div class="ffdcs-outcome-grid" style="margin-top:36px;">
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #22d3ee;">
+            <div class="ffdcs-outcome-icon">🚢</div>
+            <div class="ffdcs-outcome-title">Defence &amp; Maritime</div>
+            <div class="ffdcs-outcome-desc">Mission rehearsal, damage-control scenarios, system familiarisation and decision support for complex operational environments.</div>
+          </div>
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #2ed573;">
+            <div class="ffdcs-outcome-icon">🏭</div>
+            <div class="ffdcs-outcome-title">Industrial Systems</div>
+            <div class="ffdcs-outcome-desc">Model plants, utilities and process environments for training, disruption simulation and response planning.</div>
+          </div>
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #a78bfa;">
+            <div class="ffdcs-outcome-icon">🛡️</div>
+            <div class="ffdcs-outcome-title">Security Operations</div>
+            <div class="ffdcs-outcome-desc">Simulate intrusion paths, sensor coverage, response timelines and command workflows for preparedness and optimisation.</div>
+          </div>
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #e8b84b;">
+            <div class="ffdcs-outcome-icon">🧠</div>
+            <div class="ffdcs-outcome-title">Decision Support</div>
+            <div class="ffdcs-outcome-desc">Integrate live or historical data into simulation environments to support training, testing and what-if analysis.</div>
+          </div>
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #ff6b6b;">
+            <div class="ffdcs-outcome-icon">👥</div>
+            <div class="ffdcs-outcome-title">Training &amp; Rehearsal</div>
+            <div class="ffdcs-outcome-desc">Enable operators and teams to rehearse procedures, validate response logic and build confidence before real-world deployment.</div>
+          </div>
+          <div class="ffdcs-outcome-card" style="border-top:3px solid #f97316;">
+            <div class="ffdcs-outcome-icon">⚙️</div>
+            <div class="ffdcs-outcome-title">Design Validation</div>
+            <div class="ffdcs-outcome-desc">Assess layouts, procedures and system interactions digitally before implementation, modification or scale-up.</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(232,184,75,0.06);border:1px solid var(--accent);padding:32px;margin-top:40px;text-align:center;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.2em;margin-bottom:12px;">// REQUEST A DEMONSTRATION</div>
+          <p style="font-size:16px;color:var(--text-bright);margin-bottom:24px;line-height:1.7;">See how Medjay can configure a digital twin and simulation environment aligned to your platform, facility or mission requirement.</p>
+          <button class="btn-primary" style="padding:14px 40px;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule a Demo &#x2192;</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
   </div>
 </section>
 
@@ -2471,13 +2590,31 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
     <h2>Where We Operate</h2>
     <div class="sec-line"></div>
   </div>
-  <div class="sectors-grid">
-    <div class="sector-card"><div class="sector-icon">⚓</div><div class="sector-name">Defence</div><div class="sector-desc">Mission systems, damage control, ISR augmentation and AI-enabled decision support for defence and armed forces operations.</div></div>
-    <div class="sector-card"><div class="sector-icon">🛡️</div><div class="sector-name">Security</div><div class="sector-desc">Intelligent intrusion detection, perimeter surveillance and AI-enabled command &amp; control for high-security environments.</div></div>
-    <div class="sector-card"><div class="sector-icon">⚙️</div><div class="sector-name">Critical Infra</div><div class="sector-desc">Decision support systems for process safety, operational efficiency and real-time monitoring of industrial and utility assets.</div></div>
-    <div class="sector-card"><div class="sector-icon">🏛️</div><div class="sector-name">Corporate Risk</div><div class="sector-desc">Risk intelligence, compliance systems, and AI-driven decision support for corporate and institutional environments.</div></div>
-    <div class="sector-card"><div class="sector-icon">⚓</div><div class="sector-name">Maritime</div><div class="sector-desc">Decision support, damage control, situational awareness and safety systems for naval vessels, ports, offshore platforms and subsea assets.</div></div>
-    <div class="sector-card"><div class="sector-icon">🏢</div><div class="sector-name">Enterprise AI</div><div class="sector-desc">AI transformation platforms for large-scale enterprise operations requiring security, reliability, and intelligence.</div></div>
+  <div class="sectors-grid accordion-mobile" data-accordion-group="sectors">
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">⚓</div><div class="sector-name">Defence</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">Mission systems, damage control, ISR augmentation and AI-enabled decision support for defence and armed forces operations.</div></div></div>
+    </div>
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">🛡️</div><div class="sector-name">Security</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">Intelligent intrusion detection, perimeter surveillance and AI-enabled command &amp; control for high-security environments.</div></div></div>
+    </div>
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">⚙️</div><div class="sector-name">Critical Infra</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">Decision support systems for process safety, operational efficiency and real-time monitoring of industrial and utility assets.</div></div></div>
+    </div>
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">🏛️</div><div class="sector-name">Corporate Risk</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">Risk intelligence, compliance systems, and AI-driven decision support for corporate and institutional environments.</div></div></div>
+    </div>
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">🌊</div><div class="sector-name">Maritime</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">Decision support, damage control, situational awareness and safety systems for naval vessels, ports, offshore platforms and subsea assets.</div></div></div>
+    </div>
+    <div class="sector-card accordion-card" data-accordion>
+      <button class="accordion-head sector-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="sector-icon">🏢</div><div class="sector-name">Enterprise AI</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="sector-desc">AI transformation platforms for large-scale enterprise operations requiring security, reliability, and intelligence.</div></div></div>
+    </div>
   </div>
 </section>
 
@@ -2487,11 +2624,23 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
     <h2>Why Medjay</h2>
     <div class="sec-line"></div>
   </div>
-  <div class="why-grid">
-    <div class="why-item"><div class="why-num">01</div><div class="why-title">Operational DNA</div><div class="why-desc">Built from real frontline experience. Every platform reflects the operational realities of mission-critical environments — not theoretical models.</div></div>
-    <div class="why-item"><div class="why-num">02</div><div class="why-title">End-to-End Capability</div><div class="why-desc">Sensing → Simulation → Intelligence → Action. We deliver the full stack — not point solutions that leave gaps in your operational picture.</div></div>
-    <div class="why-item"><div class="why-num">03</div><div class="why-title">Defence-Grade Security</div><div class="why-desc">Air-gapped, offline, and on-premise architectures. Secure by design for environments where data sovereignty is non-negotiable.</div></div>
-    <div class="why-item"><div class="why-num">04</div><div class="why-title">Proven Recognition</div><div class="why-desc">IDEX (Innovation in Defence Excellence) winners. Recognised by the international defence community for innovation in AI-based damage control and decision support.</div></div>
+  <div class="why-grid accordion-mobile" data-accordion-group="why">
+    <div class="why-item accordion-card" data-accordion>
+      <button class="accordion-head why-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="why-num">01</div><div class="why-title">Operational DNA</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="why-desc">Built from real frontline experience. Every platform reflects the operational realities of mission-critical environments — not theoretical models.</div></div></div>
+    </div>
+    <div class="why-item accordion-card" data-accordion>
+      <button class="accordion-head why-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="why-num">02</div><div class="why-title">End-to-End Capability</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="why-desc">Sensing → Simulation → Intelligence → Action. We deliver the full stack — not point solutions that leave gaps in your operational picture.</div></div></div>
+    </div>
+    <div class="why-item accordion-card" data-accordion>
+      <button class="accordion-head why-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="why-num">03</div><div class="why-title">Defence-Grade Security</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="why-desc">Air-gapped, offline, and on-premise architectures. Secure by design for environments where data sovereignty is non-negotiable.</div></div></div>
+    </div>
+    <div class="why-item accordion-card" data-accordion>
+      <button class="accordion-head why-head" type="button" onclick="toggleAccordion(this)"><div style="display:flex;align-items:center;gap:14px;"><div class="why-num">04</div><div class="why-title">Proven Recognition</div></div><span class="accordion-plus">+</span></button>
+      <div class="accordion-body"><div class="accordion-body-inner"><div class="why-desc">IDEX winners, recognised for innovation in AI-based damage control and operational decision support for mission-critical environments.</div></div></div>
+    </div>
   </div>
 </section>
 
@@ -2695,7 +2844,7 @@ function showProduct(id,btn){
   document.querySelectorAll('.prod-tab').forEach(t=>t.classList.remove('active'));
   const panel=document.getElementById('panel-'+id);
   panel.classList.add('active');
-  panel.style.display=(id==='ffdcs'||id==='prava'||id==='drishti'||id==='ic2'||id==='dss'||id==='das')?'block':'';
+  panel.style.display=(id==='ffdcs'||id==='prava'||id==='drishti'||id==='ic2'||id==='dss'||id==='das'||id==='dtsim')?'block':'';
   btn.classList.add('active');
   // Auto-activate first act tab for full-width storytelling panels
   const actMaps = {
@@ -2922,5 +3071,21 @@ document.querySelectorAll('#navLinks a').forEach(function(link){
   });
 });
 </script>
+
+<script>
+function toggleAccordion(btn){
+  if (window.innerWidth > 768) return;
+  const card = btn.closest('[data-accordion]');
+  if (!card) return;
+  const group = btn.closest('[data-accordion-group]');
+  if (group){
+    group.querySelectorAll('[data-accordion]').forEach(item=>{
+      if(item!==card){ item.classList.remove('open'); }
+    });
+  }
+  card.classList.toggle('open');
+}
+</script>
+
 </body>
 </html>
