@@ -40,7 +40,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo-text{font-family:"Geist",sans-serif;font-size:15px;font-weight:700;color:var(--accent);letter-spacing:0.12em;display:flex;flex-direction:column;align-items:flex-start;line-height:1.05;}
 .nav-logo-text span{color:var(--text-dim);font-weight:400;font-size:9.5px;letter-spacing:0.22em;margin-top:2px;}
 .nav-links{display:flex;gap:32px;list-style:none;}
-.nav-deck-mobile{display:none;}
 .nav-links a{font-family:"Geist Mono",monospace;font-size:13px;color:var(--text-dim);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
 .nav-links a:hover{color:var(--accent);}
 .nav-cta{font-family:"Geist Mono",monospace;font-size:12px;padding:9px 22px;background:transparent;border:1px solid var(--accent);color:var(--accent);cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s,color 0.2s;}
@@ -741,7 +740,6 @@ div:has(> .ffdcs-act-tab){border-radius:12px;overflow:hidden;}
   .nav-links.show { display:flex; }
   .nav-links li { width:100%; }
   .nav-links a { display:block; padding:14px 20px; }
-  .nav-deck-mobile { display:list-item; }
 
   /* HERO */
   #hero { padding:80px 20px 40px; }
@@ -1412,7 +1410,6 @@ nav.scrolled{height:58px !important;background:rgba(8,10,14,.6) !important;-webk
     <li><a href="#sectors">Sectors</a></li>
     <li><a href="#why">Why Medjay</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li class="nav-deck-mobile"><a href="#" onclick="openDeckPdf();return false;">View Deck</a></li>
   </ul>
   <div class="nav-actions">
     <button class="nav-cta-secondary" onclick="openDeckPdf()">View Deck</button>
@@ -1447,6 +1444,7 @@ function openDeckPdf(){
     <div class="hero-btns">
       <button class="btn-primary hold-fill" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"><span class="btn-label">Explore Products</span></button>
       <button class="btn-secondary hold-fill" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"><span class="btn-label">About Medjay</span></button>
+      <button class="btn-secondary hold-fill" onclick="openDeckPdf()"><span class="btn-label">View Deck</span></button>
     </div>
   </div>
   <div class="scroll-ind"><span>SCROLL</span><div class="scroll-line"></div></div>
